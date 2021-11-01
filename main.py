@@ -1,4 +1,4 @@
-
+#Alex Maximilian
 
 overseas_airport_code = []
 overseas_airport_name = []
@@ -11,6 +11,7 @@ first_class = []
 
 
 
+#Reads relevant data files and process the read data 
 
 with open('Airports.csv', 'r') as f:
     read_file = f.read()
@@ -25,7 +26,7 @@ with open('Airports.csv', 'r') as f:
         except Exception:
             pass
 
-
+#Main class with all the functions
 class Airport:
     def __init__(self):
         self.medium_narrow_body = {"Type": "Medium narrow body", "Running Cost per seat per 100 km": 8, "Maximum flight range (km)": 2650,
@@ -68,9 +69,11 @@ class Airport:
                 print("\n{: <12} {: <12}\n".format("Airport Name: ", overseas_airport_name[index]))
                 return [code_input, overseas_code_input]
             else:
+                print("\nPlease enter a valid airport code")
                 self.mainmenu()
                 run()
         else:
+            print("\nPlease enter a valid airport code")
             self.mainmenu()
             run()
 
@@ -387,11 +390,11 @@ class Airport:
         print("2. Enter flight details")
         print("3. Enter price plan and calculate profit")
         print("4. Clear data")
-        print("5. quit")
+        print("5. Quit")
 
 
 
-
+#Main menu
 if __name__ == '__main__':
     uk_airport_code_data = None
     oversea_code_data = None
