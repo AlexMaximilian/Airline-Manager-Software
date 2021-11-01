@@ -81,6 +81,7 @@ class Airport:
 
     def aircrafttype(self):
         self.type_input = str(input("Please enter the type of aircraft: "))
+        #While loop to catch incorrect inputs for the Aircraft Body types
         while self.type_input.lower() not in [self.medium_narrow_body["Type"].lower(),
                                          self.large_narrow_body["Type"].lower(), self.medium_wide_body["Type"].lower()]:
             print("Incorrect Input!")
@@ -90,6 +91,7 @@ class Airport:
         if self.type_input.lower() in [self.medium_narrow_body["Type"].lower(), self.large_narrow_body["Type"].lower(),
                                   self.medium_wide_body["Type"].lower()]:
             aircraft_type.append(self.type_input.lower())
+            #Medium Narrow Body
             if self.type_input.lower() == self.medium_narrow_body["Type"].lower():
                 print("\n")
                 for k, v in self.medium_narrow_body.items():
@@ -126,7 +128,7 @@ class Airport:
                     self.mainmenu()
                     run()
 
-
+            #Large Narrow Body
             elif self.type_input.lower() == self.large_narrow_body["Type"].lower():
                 aircraft_type.append(self.type_input.lower())
                 print("\n")
@@ -157,7 +159,7 @@ class Airport:
 
                         self.mainmenu()
                         run()
-
+            #Medium Wide body
             elif self.type_input.lower() == self.medium_wide_body["Type"].lower():
                 aircraft_type.append(self.type_input.lower())
                 print("\n")
@@ -190,7 +192,7 @@ class Airport:
                         run()
 
 
-
+    #Price Plan Calculations
     def price_plan(self, uk_code, oversea_code):
 
         if oversea_code == None or uk_code == None:
@@ -383,6 +385,7 @@ class Airport:
                     self.mainmenu()
                     run()
 
+#Menu options printed
 
     def mainmenu(self):
         print("\n-- Welcome --\n")
@@ -394,7 +397,7 @@ class Airport:
 
 
 
-#Main menu
+#Main code
 if __name__ == '__main__':
     uk_airport_code_data = None
     oversea_code_data = None
