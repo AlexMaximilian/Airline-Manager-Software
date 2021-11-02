@@ -210,7 +210,7 @@ class Airport:
             self.mainmenu()
             run()
         else:
-            if uk_code == "LPL":
+            if uk_code == "LPL": #Price plan options for outbound LPL Flights
                 index = overseas_airport_code.index(oversea_code)
                 distance = distance_from_liverpool[index]
                 print(f"Distance: {distance}")
@@ -297,7 +297,7 @@ class Airport:
                     self.mainmenu()
                     run()
 
-            elif uk_code == "BOH":
+            elif uk_code == "BOH": #Price plan options for outbound BOH Flights
                 index = overseas_airport_code.index(oversea_code)
                 distance = distance_from_bourne[index]
                 if self.type_input == "medium narrow body" and int(distance) >= self.medium_narrow_body[
@@ -398,7 +398,7 @@ class Airport:
 
 
 #Main code
-if __name__ == '__main__':
+if __name__ == '__main__': #This can be used to make sure code is only executed if it is ran directly and not imported as a module
     uk_airport_code_data = None
     oversea_code_data = None
     def run():
