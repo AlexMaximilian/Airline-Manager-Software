@@ -11,8 +11,7 @@ first_class = []
 
 
 
-#Reads relevant data files and process the read data 
-
+#Reads relevant data files and processes the read data
 with open('Airports.csv', 'r') as f:
     read_file = f.read()
     read_file_split = (read_file.split('\n'))
@@ -56,7 +55,16 @@ class Airport:
         return int(flight_income)-int(flight_cost)
 
     def clear_data(self):
-        pass
+        try:
+            if self.first_class_seat_input != None and self.type_input!=None:
+                self.first_class_seat_input = None
+                self.type_input=None
+                print("\nData is cleared!\n")
+            else:
+                print("\nNo data is available!\n")
+
+        except Exception:
+            print("\nNo data is available!\n")
 
     def airpot_input(self):
         code_input = str(input("Please enter the three-letter airport code in capital letters for the UK airport: "))
@@ -81,7 +89,7 @@ class Airport:
 
     def aircrafttype(self):
         self.type_input = str(input("Please enter the type of aircraft: "))
-        #While loop to catch incorrect inputs for the Aircraft Body types
+        #While loop to catch incorrect inputs for the aircraft body types
         while self.type_input.lower() not in [self.medium_narrow_body["Type"].lower(),
                                          self.large_narrow_body["Type"].lower(), self.medium_wide_body["Type"].lower()]:
             print("Incorrect Input!")
@@ -159,7 +167,7 @@ class Airport:
 
                         self.mainmenu()
                         run()
-            #Medium Wide body
+            #Medium Wide Body
             elif self.type_input.lower() == self.medium_wide_body["Type"].lower():
                 aircraft_type.append(self.type_input.lower())
                 print("\n")
@@ -210,7 +218,7 @@ class Airport:
             self.mainmenu()
             run()
         else:
-            if uk_code == "LPL": #Price plan options for outbound LPL Flights
+            if uk_code == "LPL": #Price plan options for outbound LPL flights
                 index = overseas_airport_code.index(oversea_code)
                 distance = distance_from_liverpool[index]
                 print(f"Distance: {distance}")
@@ -229,7 +237,7 @@ class Airport:
                                                  standard_price_input)
                     flightprofit = self.flight_profit(flightincome, flightcost)
 
-                    print("\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: ",
+                    print("\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: ",
                                                                                  flightcostperseat,
                                                                                  "Flight Cost: ",
                                                                                  flightcost,
@@ -256,13 +264,13 @@ class Airport:
                     flightprofit = self.flight_profit(flightincome, flightcost)
 
                     print(
-                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: ",
+                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: $",
                                                                                flightcostperseat,
-                                                                               "Flight Cost: ",
+                                                                               "Flight Cost: $",
                                                                                flightcost,
-                                                                               "Flight Income: ",
+                                                                               "Flight Income: $",
                                                                                flightincome,
-                                                                               "Flight Profit",
+                                                                               "Flight Profit: $",
                                                                                flightprofit))
                     return ""
 
@@ -282,13 +290,13 @@ class Airport:
                     flightprofit = self.flight_profit(flightincome, flightcost)
 
                     print(
-                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: ",
+                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: $",
                                                                                flightcostperseat,
-                                                                               "Flight Cost: ",
+                                                                               "Flight Cost: $",
                                                                                flightcost,
-                                                                               "Flight Income: ",
+                                                                               "Flight Income: $",
                                                                                flightincome,
-                                                                               "Flight Profit",
+                                                                               "Flight Profit: $",
                                                                                flightprofit))
                     return ""
 
@@ -297,10 +305,10 @@ class Airport:
                     self.mainmenu()
                     run()
 
-            elif uk_code == "BOH": #Price plan options for outbound BOH Flights
+            elif uk_code == "BOH": #Price plan options for outbound BOH flights
                 index = overseas_airport_code.index(oversea_code)
                 distance = distance_from_bourne[index]
-                if self.type_input == "medium narrow body" and int(distance) >= self.medium_narrow_body[
+                if self.type_input == "medium narrow body" and int(distance) <= self.medium_narrow_body[
                     "Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
@@ -316,18 +324,18 @@ class Airport:
                     flightprofit = self.flight_profit(flightincome, flightcost)
 
                     print(
-                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: ",
+                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: $",
                                                                                flightcostperseat,
-                                                                               "Flight Cost: ",
+                                                                               "Flight Cost: $",
                                                                                flightcost,
-                                                                               "Flight Income: ",
+                                                                               "Flight Income: $",
                                                                                flightincome,
-                                                                               "Flight Profit",
+                                                                               "Flight Profit: $",
                                                                                flightprofit))
                     return ""
 
 
-                elif self.type_input == "large narrow body" and int(distance) >= self.large_narrow_body[
+                elif self.type_input == "large narrow body" and int(distance) <= self.large_narrow_body[
                     "Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
@@ -343,18 +351,18 @@ class Airport:
                     flightprofit = self.flight_profit(flightincome, flightcost)
 
                     print(
-                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: ",
+                        "\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: $",
                                                                                flightcostperseat,
-                                                                               "Flight Cost: ",
+                                                                               "Flight Cost: $",
                                                                                flightcost,
-                                                                               "Flight Income: ",
+                                                                               "Flight Income: $",
                                                                                flightincome,
-                                                                               "Flight Profit",
+                                                                               "Flight Profit: $",
                                                                                flightprofit))
                     return ""
 
 
-                elif self.type_input == "medium wide body" and int(distance) >= self.medium_wide_body[
+                elif self.type_input == "medium wide body" and int(distance) <= self.medium_wide_body[
                     "Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
@@ -370,13 +378,13 @@ class Airport:
                     flightprofit = self.flight_profit(flightincome, flightcost)
 
                     print(
-                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: ",
+                        "\n{} {}\n\n{} {}\n\n{} {}\n\n{} {}\n".format("Flight Cost Per Seat: $",
                                                                                flightcostperseat,
-                                                                               "Flight Cost: ",
+                                                                               "Flight Cost: $",
                                                                                flightcost,
-                                                                               "Flight Income: ",
+                                                                               "Flight Income: $",
                                                                                flightincome,
-                                                                               "Flight Profit",
+                                                                               "Flight Profit: $",
                                                                                flightprofit))
                     return ""
 
@@ -386,7 +394,6 @@ class Airport:
                     run()
 
 #Menu options printed
-
     def mainmenu(self):
         print("\n-- Welcome --\n")
         print("1. Enter airport details")
@@ -397,8 +404,8 @@ class Airport:
 
 
 
-#Main code
-if __name__ == '__main__': #This can be used to make sure code is only executed if it is ran directly and not imported as a module
+
+if __name__ == '__main__':#This can be used to make sure code is only executed if it is ran directly and not imported as a module
     uk_airport_code_data = None
     oversea_code_data = None
     def run():
