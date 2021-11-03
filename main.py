@@ -77,11 +77,9 @@ class Airport:
                 print("\n{: <12} {: <12}\n".format("Airport Name: ", overseas_airport_name[index]))
                 return [code_input, overseas_code_input]
             else:
-                print("\nPlease enter a valid airport code")
                 self.mainmenu()
                 run()
         else:
-            print("\nPlease enter a valid airport code")
             self.mainmenu()
             run()
 
@@ -89,7 +87,7 @@ class Airport:
 
     def aircrafttype(self):
         self.type_input = str(input("Please enter the type of aircraft: "))
-        #While loop to catch incorrect inputs for the aircraft body types
+        ##While loop to catch incorrect inputs for the aircraft body types
         while self.type_input.lower() not in [self.medium_narrow_body["Type"].lower(),
                                          self.large_narrow_body["Type"].lower(), self.medium_wide_body["Type"].lower()]:
             print("Incorrect Input!")
@@ -222,7 +220,7 @@ class Airport:
                 index = overseas_airport_code.index(oversea_code)
                 distance = distance_from_liverpool[index]
                 print(f"Distance: {distance}")
-                if self.type_input == "medium narrow body" and int(distance) <= self.medium_narrow_body["Maximum flight range (km)"]:
+                if self.type_input.lower() == "medium narrow body" and int(distance) <= self.medium_narrow_body["Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
 
@@ -249,7 +247,7 @@ class Airport:
                     return ""
 
 
-                elif self.type_input == "large narrow body" and int(distance) <= self.large_narrow_body["Maximum flight range (km)"]:
+                elif self.type_input.lower() == "large narrow body" and int(distance) <= self.large_narrow_body["Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
 
@@ -275,7 +273,7 @@ class Airport:
                     return ""
 
 
-                elif self.type_input == "medium wide body" and int(distance) <= self.medium_wide_body["Maximum flight range (km)"]:
+                elif self.type_input.lower() == "medium wide body" and int(distance) <= self.medium_wide_body["Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
 
@@ -305,10 +303,10 @@ class Airport:
                     self.mainmenu()
                     run()
 
-            elif uk_code == "BOH": #Price plan options for outbound BOH flights
+            elif uk_code == "BOH":
                 index = overseas_airport_code.index(oversea_code)
                 distance = distance_from_bourne[index]
-                if self.type_input == "medium narrow body" and int(distance) <= self.medium_narrow_body[
+                if self.type_input.lower() == "medium narrow body" and int(distance) <= self.medium_narrow_body[
                     "Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
@@ -335,7 +333,7 @@ class Airport:
                     return ""
 
 
-                elif self.type_input == "large narrow body" and int(distance) <= self.large_narrow_body[
+                elif self.type_input.lower() == "large narrow body" and int(distance) <= self.large_narrow_body[
                     "Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
@@ -362,7 +360,7 @@ class Airport:
                     return ""
 
 
-                elif self.type_input == "medium wide body" and int(distance) <= self.medium_wide_body[
+                elif self.type_input.lower() == "medium wide body" and int(distance) <= self.medium_wide_body[
                     "Maximum flight range (km)"]:
                     standard_price_input = int(input("Please enter price of standard-class seat: "))
                     first_price_input = int(input("Please enter price of first-class seat: "))
