@@ -1,4 +1,4 @@
 # Airline-Manager-Software
 
-Flight planning software for a school project
+Flight planning software 
 
